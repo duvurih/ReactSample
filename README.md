@@ -1,4 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Application
+
+![alt text](https://github.com/duvurih/ReactSample/blob/master/src/content/images/AppImage1.gif)
 
 ## Available Scripts
 
