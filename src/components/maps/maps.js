@@ -35,22 +35,23 @@ class Map extends Component {
         window.map = map;
     }
 
-    renderMarker(){
-        if(this.props.lat && this.props.lng){
-            var contentString = `<p> <img src=${require('./../../content/images/temperature.jpg')} alt="Temperature" className="image-style" width="30px" height="30px">  ${this.props.temperature} </img></p> ` +
-            `<p> <img src=${require("./../../content/images/humidity.png")} alt="Temperature" className="image-style"  width="30px" height="30px"> ${this.props.humidity} </img></p> ` +
-            `<p> <img src=${require("./../../content/images/storm.jpg")} alt="Conditions" className="image-style"  width="30px" height="30px"> ${this.props.description}  </img></p> `;
+    renderMarker = () =>{
+        var {city, temperature, humidity, description, lat, lng} = this.props;
+        if(lat && lng){
+            var contentString = `<p> <img src=${require('./../../content/images/temperature.jpg')} alt="Temperature" className="image-style" width="30px" height="30px">  ${temperature} </img></p> ` +
+            `<p> <img src=${require("./../../content/images/humidity.png")} alt="Temperature" className="image-style"  width="30px" height="30px"> ${humidity} </img></p> ` +
+            `<p> <img src=${require("./../../content/images/storm.jpg")} alt="Conditions" className="image-style"  width="30px" height="30px"> ${description}  </img></p> `;
             var information = new window.google.maps.InfoWindow({
                 content: contentString
             });
             var imageUrl = '';
-            if(this.props.description.toString().includes("rain")){
+            if(description.toString().includes("rain")){
                 imageUrl = require("./../../content/images/rainy1.png");
-             }else if(this.props.description.toString().includes("cloud")){
+             }else if(description.toString().includes("cloud")){
                 imageUrl = require("./../../content/images/cloudy1.png");
-             }else if(this.props.description.toString().includes("sky")){
+             }else if(description.toString().includes("sky")){
                 imageUrl = require("./../../content/images/sunny.jpg");
-             }else if(this.props.description.toString().includes("mist")){
+             }else if(description.toString().includes("mist")){
                 imageUrl = require("./../../content/images/mist.png");
              }else{
                 imageUrl = require("./../../content/images/others.jpg");
@@ -63,10 +64,10 @@ class Map extends Component {
                 scaledSize: new window.google.maps.Size(50, 50)
             };
             var marker = new window.google.maps.Marker({
-                position: {lat: this.props.lat, lng: this.props.lng},
-                label: this.props.temperature.toString(),
+                position: {lat: lat, lng: lng},
+                label: temperature.toString(),
                 map: window.map,
-                title: this.props.city.toString(),
+                title: city.toString(),
                 icon: image
             });
     

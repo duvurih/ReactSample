@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 class Locations extends Component {
   fetchWeather(location){
-    const items = location.split(',');
-    this.props.getWeatherData(items[0], items[1]);
+    const [city, country] = location.split(',');
+    this.props.getWeatherData(city, country);
   }
   render() {
     return (
@@ -21,5 +21,6 @@ class Locations extends Component {
 export default Locations;
 
 Locations.propTypes  = {
-    locationInfo: PropTypes.array
+    locationInfo: PropTypes.array,
+    getWeatherData: PropTypes.func
 };

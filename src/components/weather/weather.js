@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 
 class Weather extends Component {
   render() {
+    var {city, country, temperature, humidity, description, error} = this.props;
     return (
       <div>
         <h3 className="sub-heading">Weather Information</h3>
-        {this.props.city && this.props.country && <p>Location: {this.props.city}, {this.props.country}</p>}
-        {this.props.temperature && <p>Temperature: {this.props.temperature}</p>}
-        {this.props.humidity && <p>Humidity: {this.props.humidity}</p>}
-        {this.props.description && <p>Conditions: {this.props.description}</p>}
-        {this.props.error && <p>Conditions: {this.props.error}</p>}
+        {city && country && <p>Location: {city}, {country}</p>}
+        {temperature && <p>Temperature: {temperature}</p>}
+        {humidity && <p>Humidity: {humidity}</p>}
+        {description && <p>Conditions: {description}</p>}
+        {error && <p>Conditions: {error}</p>}
       </div>
     );
   }
